@@ -77,6 +77,8 @@ async function main(archwayd, name, options = {}) {
         case 'start':
             console.log("Local chain start");
             command = spawn(archwayd.command, [name]);
+            command.stdout.pipe(process.stdout);
+            command.stderr.pipe(process.stdout);
             break;
         case 'reset':
             console.log("Reset block data");
